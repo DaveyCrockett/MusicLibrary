@@ -26,14 +26,14 @@ class App extends Component {
    
     deleteSong(songId){
         const originalSongs = [...this.state.songs]
-        debugger;
-        this.setState(originalSongs.filter(function(song){
+        originalSongs.filter(function(song){
             if (song.id === songId){
                 originalSongs.pop(song)
             }
             return originalSongs
-        })
+        }
         );
+        this.setState({songs: originalSongs})
     }
 
     render() {
