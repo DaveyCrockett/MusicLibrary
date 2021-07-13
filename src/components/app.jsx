@@ -5,7 +5,7 @@ import axios from 'axios';
 
 class App extends Component {
     state = { 
-        songData: [],
+        songsData: [],
         songs: {
             title: '',
             album: '',
@@ -15,30 +15,31 @@ class App extends Component {
         }        
     }
 
-    componenetDidMount(){
-        this.makeGetRequest();
-    }
+    
 
     async makeGetRequest(){
         try{
-            let response = await axios.get('https://github.com/DaveyCrockett/music_library_API');
+            let response = await axios.get('http://127.0.0.1:8000/music/');
             console.log(response.data)
+            this.setState({
+                songsData: response.data
+            })
         }
         catch (ex) {
             console.log('Error in API call!');
         }
     }
    
-    deleteSong(songId){
-        const originalSongs = [...this.state.songsData]
-        originalSongs.filter(function(song){
-            if (song.id === songId){
-                originalSongs.pop(song)
-            }
-            return originalSongs
+    async deleteSong(songId){
+        try{
+            await axios.delete(`http://127.0.0.1:8000/music/${songId}`)
+            const songsData = this.state.songsData;
+            const newSongsData = songsData.filter(i => i.id !== songId)
+            this.setState({ songsData: newSongsData })
         }
-        );
-        this.setState({songsData: originalSongs})
+        catch (ex) {
+            console.log('Error in API call!');
+        }
     }
 
     addSong(song){
@@ -54,6 +55,10 @@ class App extends Component {
     handleSubmit(event){
         event.preventDefault();
     }
+
+    componentDidMount(){
+        this.makeGetRequest();
+    }
     
     render() {
 
@@ -65,6 +70,7 @@ class App extends Component {
             <div>
                 <table>
                     <tbody>
+                        {console.log(this.state.songsData)}
                         <SongMapping songs={this.state.songsData} deleteSong={bindNewState}/>
                     </tbody>
                 </table>
