@@ -29,6 +29,7 @@ class App extends Component {
             console.log('Error in API call!');
         }
     }
+
    
     async deleteSong(songId){
         try{
@@ -49,11 +50,19 @@ class App extends Component {
     }
     
     handleChange(event) {
-        this.setState({[event.target.songs]: event.target.value});
+        this.setState({[event.target.name]: event.target.value});
     }
 
-    handleSubmit(event){
+    async handleSubmit(event){
         event.preventDefault();
+        let response = await axios.post(`http://127.0.0.1:8000/music/`, { title: this.state.title,
+        album: this.state.album,
+        release_date: this.state.releaseDate, 
+        artist: this.state.artist })
+        this.setState({
+            songData: [...this.state.songsData, response.data]
+        })
+        
     }
 
     componentDidMount(){
@@ -75,7 +84,7 @@ class App extends Component {
                     </tbody>
                 </table>
                 <div>
-                    <SongForm handleSubmit={handleSubmit} songs={this.state.songsData} handleChange={handleChange}/>
+                    <SongForm handleSubmit={handleSubmit} songs={this.state.songsData} handleChange={() => handleChange}/>
                 </div>
             </div>
            
