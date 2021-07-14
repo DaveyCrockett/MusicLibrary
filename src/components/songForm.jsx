@@ -13,7 +13,7 @@ function SongForm(props) {
           <label>Genre:</label>
           <input type="text" name="genre" id="genre" value={props.songs.genre} onChange={props.handleChange()}></input>
           <label>Release Date</label>
-          <input type="text" name="releaseDate" id="releaseDate" value={props.songs.releaseDate} onChange={props.handleChange()}></input>
+          <input type="text" name="release_date" id="release_date" value={props.songs.release_date} onChange={props.handleChange()}></input>
           <button type="submit">Submit</button>
       </form>
     );

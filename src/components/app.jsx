@@ -57,8 +57,9 @@ class App extends Component {
         event.preventDefault();
         let response = await axios.post(`http://127.0.0.1:8000/music/`, { title: this.state.title,
         album: this.state.album,
-        release_date: this.state.releaseDate, 
-        artist: this.state.artist })
+        release_date: this.state.release_date, 
+        artist: this.state.artist,
+        genre: this.state.genre })
         this.setState({
             songData: [...this.state.songsData, response.data]
         })

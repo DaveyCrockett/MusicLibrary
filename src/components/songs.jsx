@@ -8,7 +8,7 @@ function SongMapping(props) {
             <td>{item.album}</td>
             <td>{item.artist}</td>
             <td>{item.genre}</td>
-            <td>{item.releaseDate}</td>
+            <td>{item.release_date}</td>
             <td><button type="button" onClick={() => props.deleteSong(item.id)}>Delete</button></td>
         </tr>)
     );
