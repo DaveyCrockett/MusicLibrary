@@ -1,6 +1,7 @@
 import React from 'react';
 
 function SongMapping(props) {
+    console.log(props.songs)
     return (
         props.songs.map((item) => 
         <tr>
