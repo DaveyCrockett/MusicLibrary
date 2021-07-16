@@ -75,17 +75,17 @@ class App extends Component {
     async handleSubmit(){
         let response = await axios.post(`http://127.0.0.1:8000/music/`, { title: this.state.title,
         album: this.state.album,
-        releaseDate: this.state.releaseDate, 
+        release_date: this.state.release_date, 
         artist: this.state.artist,
         genre: this.state.genre })
         this.setState({
-            songsData: [...this.state.songsData, response.data]
+            songData: [...this.state.songsData, response.data]
         })
+        window.location.reload();
     }
 
     handleFilterSubmit(){
         const itemsUpdate = this.state.songsData.filter((song) => {
-            console.log(song)
             var filterTitle =
               song.title
                 .toLowerCase()
@@ -97,7 +97,7 @@ class App extends Component {
               song.artist.toLowerCase().indexOf(this.state.filterArtist.toLowerCase()) >
               -1;
             var filterReleaseDate =
-              song.release_date.toLowerCase().indexOf(this.state.filterReleaseDate.toLowerCase()) >
+              song.artist.toLowerCase().indexOf(this.state.filterReleaseDate.toLowerCase()) >
               -1;
             var filterGenre =
               song.genre.toLowerCase().indexOf(this.state.filterGenre.toLowerCase()) >
@@ -114,10 +114,10 @@ class App extends Component {
         event.preventDefault()
         this.setState({
             filterTitle: '',
-            filterAlbum: '',
-            filterGenre: '',
-            filterReleaseDate: '',
-            filterArtist: ''
+        filterAlbum: '',
+        filterGenre: '',
+        filterReleaseDate: '',
+        filterArtist: ''
 
         })
     }

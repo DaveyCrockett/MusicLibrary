@@ -4,7 +4,8 @@ import './app.css'
 function SongForm(props) {
     
     return (
-      <form onSubmit={props.handleSubmit} className='formColumns'>
+      <form onSubmit={props.handleSubmit}>
+        {console.log(props.songs)}
           <div className='songField'><label className='songInputLabel'>Title:</label>
           <input type="text" name="title" id="title" value={props.songs.title} onChange={props.handleChange()} className='songInput'></input></div>
           <div className='songField'><label className='songInputLabel'>Album:</label>

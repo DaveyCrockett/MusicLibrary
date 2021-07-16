@@ -3,7 +3,7 @@ import React from 'react';
 function TableFilter(props) {
     
     return (
-      <form onSubmit={props.handleFilterSubmit} onReset={props.handleFilterReset} id='filterReset'>
+      <form onSubmit={() => props.handleFilterSubmit} onReset={props.handleFilterReset} id='filterReset'>
           <div className='songField'><label  className='songInputLabel'>Title:</label>
           <input type="text" name="filterTitle" id="title" value={props.filterTitle} onChange={(e) => props.handleFilterChange(e, "filterTitle")} className='songInput'></input></div>
           <div className='songField'><label  className='songInputLabel'>Album:</label>
