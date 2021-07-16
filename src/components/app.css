@@ -18,7 +18,7 @@
     margin-top: 100px;
     float: right;
     display: inline;
-    margin-right: 100px;
+    width: 80%;
 }
 
 .subTitles {
@@ -61,7 +61,7 @@
 .title {
     margin-right: 400px;
     text-align: center;
-    color: orange;
+    color: orange;   
 }
 
 .formSubmit {
@@ -97,4 +97,99 @@
 
 .imgBanner img {
     width: 100%;
+}
+
+#leftStaff {
+    width: 20%;
+}
+
+#rightStaff {
+    width: 20%;
+    display: inline;
+}
+
+.songField {
+    display: inline;
+}
+
+@media screen and (max-width: 1440px) {
+  .songInput {
+      margin-left: 0;
+      margin-right: 0;
+      width: 150px;
+  }
+
+  .formSubmit {
+      padding: 8px 24px
+  }
+}
+
+@media screen and (max-width: 768px){
+    .imgBanner {
+        width: 30%;
+        margin-top: 100px;
+    }
+
+    .appContainer {
+        width: 70%;
+    }
+
+    .title {
+        margin-right: 0;
+    }
+
+    .subTitles {
+        margin-right: 0;
+    }
+
+    .songField {
+        display: block;
+        text-align: center;
+    }
+
+    .formSubmit {
+        margin-left: 350px;
+        margin-top: 20px;
+    }
+
+    .collapseBorder {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .imgBanner {
+        width: 100%;
+        height: 50%;
+        margin-top: 20px;
+    }
+    
+    .title {
+        margin-right: 0;
+        font-size: 24px;
+    }
+
+    .appContainer {
+        float: none;
+    }
+
+    .subTitles {
+        margin-right: 0;
+    }
+
+    .songField {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .formSubmit {
+        margin-left: 200px;
+        margin-top: 20px;
+        padding: 8px 24px
+    }
+
+    .collapseBorder {
+        margin-left: 0;
+    }
 }

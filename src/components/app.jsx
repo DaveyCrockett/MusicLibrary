@@ -5,6 +5,7 @@ import axios from 'axios';
 import TableFilter from './tableFilter';
 import './app.css'
 import NarutoGo from '../images/NarutoGO.png';
+import MusicStaff from '../images/MusicStaff.png';
 
 
 class App extends Component {
@@ -74,17 +75,17 @@ class App extends Component {
     async handleSubmit(){
         let response = await axios.post(`http://127.0.0.1:8000/music/`, { title: this.state.title,
         album: this.state.album,
-        release_date: this.state.release_date, 
+        releaseDate: this.state.releaseDate, 
         artist: this.state.artist,
         genre: this.state.genre })
         this.setState({
-            songData: [...this.state.songsData, response.data]
+            songsData: [...this.state.songsData, response.data]
         })
-        window.location.reload();
     }
 
     handleFilterSubmit(){
         const itemsUpdate = this.state.songsData.filter((song) => {
+            console.log(song)
             var filterTitle =
               song.title
                 .toLowerCase()
@@ -96,7 +97,7 @@ class App extends Component {
               song.artist.toLowerCase().indexOf(this.state.filterArtist.toLowerCase()) >
               -1;
             var filterReleaseDate =
-              song.artist.toLowerCase().indexOf(this.state.filterReleaseDate.toLowerCase()) >
+              song.release_date.toLowerCase().indexOf(this.state.filterReleaseDate.toLowerCase()) >
               -1;
             var filterGenre =
               song.genre.toLowerCase().indexOf(this.state.filterGenre.toLowerCase()) >
@@ -107,6 +108,18 @@ class App extends Component {
             console.log(this.state.updatedItems);
           });
       
+    }
+
+    handleFilterReset(event) {
+        event.preventDefault()
+        this.setState({
+            filterTitle: '',
+            filterAlbum: '',
+            filterGenre: '',
+            filterReleaseDate: '',
+            filterArtist: ''
+
+        })
     }
 
     componentDidMount(){
@@ -139,6 +152,7 @@ class App extends Component {
         const handleChange = this.handleChange.bind(this);
         const handleFilterChange = this.handleFilterChange.bind(this)
         const handleFilterSubmit = this.handleFilterSubmit.bind(this)
+        const handleFilterReset = this.handleFilterReset.bind(this)
 
         return (
             <div>
@@ -146,7 +160,7 @@ class App extends Component {
                 <img alt='Naruto fan art' src={NarutoGo} />
             </div>
             <div className='appContainer'>
-                <h1 className='title'>My Music Library</h1>
+                <h1 className='title'><img id='leftStaff' alt='Music Staff' src={MusicStaff} />My Music Library<img id='rightStaff' alt='Music Staff' src={MusicStaff} /></h1>
                 <div className='songForm'>
                     <h2 className='subTitles'>Add a New Song!</h2>
                     <SongForm handleSubmit={handleSubmit} songs={this.state.songsData} handleChange={() => handleChange}/>
@@ -158,7 +172,7 @@ class App extends Component {
                 </table>
                 <div className='filter'>
                     <h2 className='subTitles'>Filter by Fields:</h2>
-                        <TableFilter handleFilterSubmit={handleFilterSubmit} songs={this.state.songsData} handleFilterChange={handleFilterChange} filterTitle={this.state.filterTitle} filterAlbum={this.state.filterAlbum} filterGenre={this.state.filterGenre} filterReleaseDate={this.state.filterReleaseDate} filteArtist={this.filteArtist} />
+                        <TableFilter handleFilterReset={handleFilterReset} handleFilterSubmit={handleFilterSubmit} songs={this.state.songsData} handleFilterChange={handleFilterChange} filterTitle={this.state.filterTitle} filterAlbum={this.state.filterAlbum} filterGenre={this.state.filterGenre} filterReleaseDate={this.state.filterReleaseDate} filterArtist={this.state.filterArtist} />
                 </div>
                 <div className='results'>
                     <h2 className='subTitles'>Results:</h2>
