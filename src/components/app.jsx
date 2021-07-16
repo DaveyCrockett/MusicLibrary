@@ -3,6 +3,9 @@ import SongMapping from './songs';
 import SongForm from './songForm';
 import axios from 'axios';
 import TableFilter from './tableFilter';
+import './app.css'
+import NarutoGo from '../images/NarutoGO.png';
+
 
 class App extends Component {
     state = { 
@@ -117,11 +120,11 @@ class App extends Component {
         {updatedItems.map((updatedItem) => {
           return (
                 <tr>
-                    <td>{updatedItem.title}</td>
-                    <td> {updatedItem.album}</td>
-                    <td>{updatedItem.artist}</td>
-                    <td>{updatedItem.genre}</td>
-                    <td>{updatedItem.release_date}</td>
+                    <td className='songTable'>{updatedItem.title}</td>
+                    <td className='songTable'> {updatedItem.album}</td>
+                    <td className='songTable'>{updatedItem.artist}</td>
+                    <td className='songTable'>{updatedItem.genre}</td>
+                    <td className='songTable'>{updatedItem.release_date}</td>
                 </tr>
           );
         })}
@@ -139,27 +142,32 @@ class App extends Component {
 
         return (
             <div>
-                <table>
+            <div className='imgBanner'>
+                <img alt='Naruto fan art' src={NarutoGo} />
+            </div>
+            <div className='appContainer'>
+                <h1 className='title'>My Music Library</h1>
+                <div className='songForm'>
+                    <h2 className='subTitles'>Add a New Song!</h2>
+                    <SongForm handleSubmit={handleSubmit} songs={this.state.songsData} handleChange={() => handleChange}/>
+                </div>
+                <table className='collapseBorder'>
                     <tbody>
-                        {console.log(this.state.songsData)}
                         <SongMapping songs={this.state.songsData} deleteSong={bindNewState}/>
                     </tbody>
                 </table>
-                <div>
-                    <SongForm handleSubmit={handleSubmit} songs={this.state.songsData} handleChange={() => handleChange}/>
-                </div>
-                <div>
-                    <h2>Filter by Fields:</h2>
+                <div className='filter'>
+                    <h2 className='subTitles'>Filter by Fields:</h2>
                         <TableFilter handleFilterSubmit={handleFilterSubmit} songs={this.state.songsData} handleFilterChange={handleFilterChange} filterTitle={this.state.filterTitle} filterAlbum={this.state.filterAlbum} filterGenre={this.state.filterGenre} filterReleaseDate={this.state.filterReleaseDate} filteArtist={this.filteArtist} />
                 </div>
-                <div>
-                    <h2>Results:</h2>
-                    <table>
+                <div className='results'>
+                    <h2 className='subTitles'>Results:</h2>
+                    <table className='collapseBorder'>
                         {this.renderList()}
                     </table>
                 </div>  
             </div>
-           
+           </div>
         );
     }
 }

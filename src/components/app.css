@@ -1,0 +1,100 @@
+.songTable {
+    border: 2px #3D59AB solid;
+    padding: 5px;
+    color: #00688B;
+}
+
+.collapseBorder {
+    border-collapse: collapse;
+    margin-left: 250px;
+}
+
+.songForm {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.appContainer {
+    margin-top: 100px;
+    float: right;
+    display: inline;
+    margin-right: 100px;
+}
+
+.subTitles {
+    margin-right: 400px;
+    text-align: center;
+    color: #C83200;
+}
+
+.songInput {
+    margin-right: 20px;
+    margin-left: 5px;
+    line-height: 24pt;
+    font-size: 12pt;
+    border: none;
+    border-bottom: 0.125rem solid blue;
+    color: #00688B;
+}
+
+.songInput:focus {
+    outline: none;
+    background-color: lightblue;
+}
+
+.songInputLabel {
+    color: blue;
+}
+
+.filter{
+    margin-top: 50px;
+}
+
+.results {
+    margin-top: 50px;
+}
+
+.deleteRow {
+    padding-left: 20px;
+}
+
+.title {
+    margin-right: 400px;
+    text-align: center;
+    color: orange;
+}
+
+.formSubmit {
+    border-radius: 12px;
+    font-size: 16px;
+    color: blue;
+    padding: 12px 32px;
+    font-weight: bold;
+}
+
+.formSubmit:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.btnDelete {
+    color: #3D59AB;
+    border-radius: 12px;
+    padding: 5px 24px;
+    background-color: white;
+    border: 2px solid #3D59AB;
+}
+
+.btnDelete:hover {
+    background-color: #3D59AB;
+    color: white;
+}
+
+.imgBanner {
+    width: 20%;
+    float: left;
+    margin-top: 200px;
+}
+
+.imgBanner img {
+    width: 100%;
+}
